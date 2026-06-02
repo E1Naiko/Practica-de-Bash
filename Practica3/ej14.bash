@@ -44,11 +44,19 @@ final () {
 	echo "Ente en final, estoy re loco"
 	echo " -F Directorio: $1"
 	echo " -F Modo: $2"
-        echo " -F Cadena: $3"
+    echo " -F Cadena: $3"
 
+	for valor in "$1"/*; do
+        if [[ -f "$valor" ]]; then
+            nombre=$(basename "$valor")
+            mv "$valor" "$1/$nombre$3"
+        fi
+    done
 }
 
-if [ $# -gt 0 ]; then
+if [ $# -eq 0 ]; then
+	echo "Papito no pusiste nada, no flashees"
+else
 	echo "Averga"
 	if [ $# -lt 3 ]; then
 		echo "Papito te quedaste corto, dale media pila"
@@ -75,6 +83,4 @@ if [ $# -gt 0 ]; then
 		echo "No se que pingo es $1, papito vos estas muy equivocado"
 		;;
 	esac
-else
-	echo "Papito no pusiste nada, no flashees"
 fi
