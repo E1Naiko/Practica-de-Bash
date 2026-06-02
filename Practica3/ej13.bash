@@ -17,6 +17,7 @@
 # un directorio con el nombre recibido como parámetro.
 
 Listar(){
+	echo "$1"
 	ls
 }
 
@@ -31,7 +32,7 @@ QuienEsta(){
 for ((i=0; i < 100; i++))
 do
 	echo $i
-done
+done 
 
 echo "Wachin elegi:"
 echo " ➢ Listar: lista el contenido del directorio actual."
@@ -44,7 +45,7 @@ case $decision in
 	
 	
 	Listar)
-		Listar
+		Listar 4
 		;;
 	
 
@@ -61,3 +62,21 @@ case $decision in
 	*) echo "Wachin vos estas muy equivocado."
 esac
 
+if [ $# -gt 0 ]; then
+	echo "Papito encontre $# parametros"
+	
+	echo "Parametro $1"
+	if [ -d "$1" ]; then
+		echo "Efectivamente, es un archivo"
+		exit
+	
+	else
+		echo "Nose que es eso amigo, ahi te hago un directorio para romper los huevos"
+		mkdir "$1"
+	fi
+	exit
+	
+else
+	echo "Papito te olvidaste los parametros, vos estas muy equivocado"
+
+fi
