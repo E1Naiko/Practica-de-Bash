@@ -1,9 +1,11 @@
+#!/bin/bash
+
 # Realice un script que implemente a través de la utilización de funciones las
 # operaciones básicas sobre arreglos:
 
 inicializar () {
 	# ➢ inicializar: Crea un arreglo llamado array vacío
-	
+	arrayVacio=()	
 	return
 }
 
@@ -18,6 +20,7 @@ agregar_elem () {
 		echo "EEEE para se te fue la mano"
 		return 1
 	fi
+	arrayVacio+=("$1")
 	return
 }
 
@@ -46,4 +49,8 @@ imprimir () {
 	return
 }
 
-
+echo "pinga"
+inicializar
+agregar_elem "juas"
+agregar_elem "Herlan"
+echo "${arrayVacio[1]}"
