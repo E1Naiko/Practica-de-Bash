@@ -16,18 +16,28 @@
 # el resultado será: /tmp/EJa /tmp/EJb
 
 comienzo () {
-	echo "Entre en comienzo, estoy re loco"
-	echo " -C Directorio: $1"
-	echo " -C Modo: $2"
-        echo " -C Cadena: $3"
-	for valor in $1; do
-		echo "$valor"
-		if [[ -f "$valor" ]]; then
-			echo -f "$(valor)"
-			mv "$valor" "$(1)/$(basename "$valor")"
-		fi
-	done
-	       	
+#	echo "Entre en comienzo, estoy re loco"
+#	echo " -C Directorio: $1"
+#	echo " -C Modo: $2"
+#        echo " -C Cadena: $3"
+#	for valor in "$1/$(basename "$valor")"; do
+#		echo "$valor"
+#		if [[ -f "$valor" ]]; then
+#			echo -f "$(valor)"
+#			mv "$valor" "$(1)/$(basename "$valor")"
+#		fi
+#	done
+    echo "Entre en comienzo, estoy re loco"
+    echo " -C Directorio: $1"
+    echo " -C Modo: $2"
+    echo " -C Cadena: $3"
+
+    for valor in "$1"/*; do
+        if [[ -f "$valor" ]]; then
+            nombre=$(basename "$valor")
+            mv "$valor" "$1/$3$nombre"
+        fi
+    done	       	
 }
 
 final () {
